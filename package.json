@@ -1,0 +1,46 @@
+{
+  "name": "react-example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port=3000 --host=0.0.0.0",
+    "build": "vite build && tsx scripts/prerender.ts",
+    "preview": "vite preview",
+    "clean": "rm -rf dist server.js",
+    "verify": "tsx scripts/verify-build.ts && tsx scripts/verify-images.ts && tsx scripts/verify-numbers.ts && tsx scripts/verify-calculators.ts && tsx scripts/test-dom-inputs.ts",
+    "verify:build": "tsx scripts/verify-build.ts",
+    "verify:images": "tsx scripts/verify-images.ts",
+    "verify:numbers": "tsx scripts/verify-numbers.ts",
+    "verify:calculators": "tsx scripts/verify-calculators.ts",
+    "verify:input-display": "tsx scripts/verify-input-display.ts",
+    "verify:browser-inputs": "tsx scripts/test-dom-inputs.ts",
+    "test:calculations": "tsx scripts/test-calculations.ts",
+    "test:browser": "tsx scripts/test-playwright.ts",
+    "test:dom": "tsx scripts/test-dom-inputs.ts",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@tailwindcss/vite": "^4.1.14",
+    "@vitejs/plugin-react": "^5.0.4",
+    "dotenv": "^17.2.3",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "vite": "^6.2.3"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^30.0.0",
+    "@types/node": "^22.14.0",
+    "autoprefixer": "^10.4.21",
+    "esbuild": "^0.25.0",
+    "jsdom": "^30.0.1",
+    "playwright": "^1.63.0",
+    "tailwindcss": "^4.1.14",
+    "tsx": "^4.21.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.3"
+  }
+}
