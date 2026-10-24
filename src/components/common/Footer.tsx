@@ -61,7 +61,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCookieSettings }) => {
                     className="hover:text-emerald-700 hover:underline transition-colors flex items-center gap-1 text-slate-600"
                   >
                     <span>{cat.name}</span>
-                    <span className="text-[10px] text-slate-500 font-mono">({cat.count})</span>
+                    <span className="text-[10px] text-slate-300 font-mono">({cat.count})</span>
                   </Link>
                 </li>
               ))}
@@ -76,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCookieSettings }) => {
             <ul className="space-y-2 text-xs">
               <li>
                 <Link
-                  to="/methodology"
+                  to="/methodology/"
                   className="hover:text-emerald-700 hover:underline transition-colors text-slate-600"
                 >
                   Calculation Methodology
@@ -84,7 +84,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCookieSettings }) => {
               </li>
               <li>
                 <Link
-                  to="/privacy"
+                  to="/privacy/"
                   className="hover:text-emerald-700 hover:underline transition-colors text-slate-600"
                 >
                   Privacy Policy & Security
@@ -92,7 +92,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCookieSettings }) => {
               </li>
               <li>
                 <Link
-                  to="/terms"
+                  to="/terms/"
                   className="hover:text-emerald-700 hover:underline transition-colors text-slate-600"
                 >
                   Terms of Service & Disclaimer
@@ -100,7 +100,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCookieSettings }) => {
               </li>
               <li>
                 <Link
-                  to="/about"
+                  to="/about/"
                   className="hover:text-emerald-700 hover:underline transition-colors text-slate-600"
                 >
                   About ArchEstate Pro
@@ -108,7 +108,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCookieSettings }) => {
               </li>
               <li>
                 <Link
-                  to="/contact"
+                  to="/contact/"
                   className="hover:text-emerald-700 hover:underline transition-colors text-slate-600 font-semibold text-emerald-800"
                 >
                   Contact Us

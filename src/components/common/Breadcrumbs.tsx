@@ -17,7 +17,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   calculatorTitle,
 }) => {
   return (
-    <nav aria-label="Breadcrumb" className="mb-6 flex items-center flex-wrap gap-2 text-xs text-slate-500 font-medium">
+    <nav aria-label="Breadcrumb" className="mb-6 flex items-center flex-wrap gap-2 text-xs text-slate-600 font-medium">
       <Link
         to="/"
         id="breadcrumb-home-btn"
@@ -29,7 +29,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 
       {categoryName && categoryId && (
         <>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+          <ChevronRight className="w-3.5 h-3.5 text-slate-600 shrink-0" />
           <Link
             to={getCategoryPath(categoryId)}
             id={`breadcrumb-category-${categoryId}`}
@@ -42,7 +42,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 
       {calculatorTitle && (
         <>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+          <ChevronRight className="w-3.5 h-3.5 text-slate-600 shrink-0" />
           <span className="text-slate-900 font-semibold truncate max-w-[240px] sm:max-w-md px-1.5 py-1 bg-slate-100 rounded">
             {calculatorTitle}
           </span>

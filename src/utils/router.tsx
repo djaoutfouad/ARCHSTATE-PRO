@@ -130,12 +130,13 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   }, []);
 
   const navigateToCalculator = useCallback((slug: string) => {
-    navigate(`/calculators/${slug}`);
+    const cleanSlug = slug.replace(/\/+$/, '');
+    navigate(`/calculators/${cleanSlug}/`);
   }, [navigate]);
 
   const navigateToCategory = useCallback((categoryId: string) => {
     const route = CATEGORY_ROUTES[categoryId] || '/';
-    navigate(route);
+    navigate(route.endsWith('/') ? route : `${route}/`);
   }, [navigate]);
 
   const navigateToHome = useCallback(() => {
@@ -145,11 +146,11 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const navigateToLegal = useCallback((type: 'contact' | 'privacy' | 'terms' | 'about' | 'methodology' | null) => {
     if (!type) {
       // Close modal if on a regular page, or navigate to home if directly on legal page
-      if (['/contact', '/privacy', '/terms', '/about', '/methodology'].includes(currentPath)) {
+      if (['/contact', '/privacy', '/terms', '/about', '/methodology', '/contact/', '/privacy/', '/terms/', '/about/', '/methodology/'].includes(currentPath)) {
         navigate('/');
       }
     } else {
-      navigate(`/${type}`);
+      navigate(`/${type}/`);
     }
   }, [navigate, currentPath]);
 

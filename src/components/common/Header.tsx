@@ -105,6 +105,7 @@ export const Header: React.FC<HeaderProps> = () => {
                   type="button"
                   onClick={() => setSearchQuery('')}
                   id="clear-search-btn"
+                  aria-label="Clear search input"
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-600 hover:text-slate-800"
                 >
                   <X className="w-4 h-4" />
@@ -151,7 +152,7 @@ export const Header: React.FC<HeaderProps> = () => {
                             </p>
                           </div>
                         </div>
-                        <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+                        <ChevronRight className="w-4 h-4 text-slate-600 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
                       </button>
                     ))}
                   </div>
@@ -187,7 +188,7 @@ export const Header: React.FC<HeaderProps> = () => {
               <span>Real Estate</span>
             </Link>
             <Link
-              to="/contact"
+              to="/contact/"
               id="nav-contact-btn"
               className="ml-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 hover:bg-emerald-100 hover:text-emerald-900 transition-colors flex items-center gap-1.5 shadow-2xs"
             >

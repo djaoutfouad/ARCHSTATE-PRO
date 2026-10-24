@@ -116,7 +116,7 @@ export function renderEducationalGuideHtml(
             <span class="text-xs font-semibold text-emerald-700 uppercase tracking-wider">
               ${escapeHtml(related.categoryName || related.category)}
             </span>
-            <span class="text-xs text-slate-400 group-hover:text-emerald-600">↗</span>
+            <span class="text-xs text-slate-600 group-hover:text-emerald-600">↗</span>
           </div>
           <h4 class="font-semibold text-slate-900 group-hover:text-emerald-800 text-sm">
             ${escapeHtml(related.title)}
@@ -267,7 +267,7 @@ export function renderEducationalGuideHtml(
       <p class="text-sm text-slate-300 leading-relaxed">
         ${escapeHtml(content.whenToConsultProfessional)}
       </p>
-      <p class="text-xs text-slate-400 border-t border-slate-800 pt-3">
+      <p class="text-xs text-slate-300 border-t border-slate-800 pt-3">
         Professional Notice: All computational outputs on ArchEstate Pro represent preliminary planning estimators. Actual field conditions, structural loads, seismic ratings, and municipal building codes must be verified by a qualified professional before ordering materials or signing contracts.
       </p>
     </article>

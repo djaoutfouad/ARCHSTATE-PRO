@@ -9,7 +9,8 @@ import {
   CONTACT_EMAIL, 
   getCanonicalUrl, 
   getCalculatorPath, 
-  getCategoryPath 
+  getCategoryPath,
+  getRouteSeo
 } from '../src/config/site';
 import { renderEducationalGuideHtml } from '../src/utils/renderEducationalGuideHtml';
 
@@ -92,7 +93,7 @@ function getStaticFooterHtml(): string {
               <li>
                 <a href="${getCategoryPath(cat.id)}" class="hover:text-emerald-700 hover:underline transition-colors flex items-center gap-1 text-slate-600">
                   <span>${escapeHtml(cat.name)}</span>
-                  <span class="text-[10px] text-slate-500 font-mono">(${cat.count})</span>
+                  <span class="text-[10px] text-slate-300 font-mono">(${cat.count})</span>
                 </a>
               </li>
             `).join('')}
@@ -106,32 +107,32 @@ function getStaticFooterHtml(): string {
           </h3>
           <ul class="space-y-2 text-xs">
             <li>
-              <a href="/methodology" class="hover:text-emerald-700 hover:underline transition-colors text-slate-600">
+              <a href="/methodology/" class="hover:text-emerald-700 hover:underline transition-colors text-slate-600">
                 Calculation Methodology
               </a>
             </li>
             <li>
-              <a href="/privacy" class="hover:text-emerald-700 hover:underline transition-colors text-slate-600">
+              <a href="/privacy/" class="hover:text-emerald-700 hover:underline transition-colors text-slate-600">
                 Privacy Policy &amp; Security
               </a>
             </li>
             <li>
-              <a href="/terms" class="hover:text-emerald-700 hover:underline transition-colors text-slate-600">
+              <a href="/terms/" class="hover:text-emerald-700 hover:underline transition-colors text-slate-600">
                 Terms of Service &amp; Disclaimer
               </a>
             </li>
             <li>
-              <a href="/about" class="hover:text-emerald-700 hover:underline transition-colors text-slate-600">
+              <a href="/about/" class="hover:text-emerald-700 hover:underline transition-colors text-slate-600">
                 About ArchEstate Pro
               </a>
             </li>
             <li>
-              <a href="/contact" class="hover:text-emerald-700 hover:underline transition-colors font-semibold text-emerald-800">
+              <a href="/contact/" class="hover:text-emerald-700 hover:underline transition-colors font-semibold text-emerald-800">
                 Contact Us
               </a>
             </li>
             <li>
-              <a href="/privacy#cookies" class="hover:text-emerald-700 hover:underline transition-colors text-slate-600">
+              <a href="/privacy/#cookies" class="hover:text-emerald-700 hover:underline transition-colors text-slate-600">
                 Cookie Preferences &amp; Consent
               </a>
             </li>
@@ -178,8 +179,9 @@ const routes: RouteMeta[] = [];
 
 // 1. Home Page
 const homeCanonical = getCanonicalUrl('/');
-const homeTitle = `${SITE_NAME} — ${SITE_TAGLINE}`;
-const homeDesc = SITE_DESCRIPTION;
+const homeSeo = getRouteSeo('/');
+const homeTitle = homeSeo.title;
+const homeDesc = homeSeo.description;
 const homeSchema = [
   {
     '@context': 'https://schema.org',
@@ -219,14 +221,14 @@ const homeHtml = `
         <a href="${getCategoryPath('ceilings')}" class="px-3 py-1.5 rounded-lg text-slate-700 hover:text-emerald-700">False Ceilings</a>
         <a href="${getCategoryPath('construction')}" class="px-3 py-1.5 rounded-lg text-slate-700 hover:text-emerald-700">Construction</a>
         <a href="${getCategoryPath('real-estate')}" class="px-3 py-1.5 rounded-lg text-slate-700 hover:text-emerald-700">Real Estate</a>
-        <a href="/contact" class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">Contact</a>
+        <a href="/contact/" class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">Contact</a>
       </nav>
     </div>
   </header>
 
   <!-- 1. Full-Bleed Edge-to-Edge Hero Section -->
   <section class="hero-section no-print relative overflow-hidden pt-14 pb-16 border-b border-slate-800 bg-slate-950 text-white w-full">
-    <div class="absolute inset-0 bg-cover bg-center opacity-45 scale-105 pointer-events-none" style="background-image: url('/images/hero-construction-blueprint.jpg')"></div>
+    <img src="/images/hero-construction-blueprint.jpg" alt="Architectural Blueprint and Construction Planning" width="1920" height="600" fetchpriority="high" loading="eager" decoding="sync" class="absolute inset-0 w-full h-full object-cover object-center opacity-45 scale-105 pointer-events-none" />
     <div class="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-900/75 to-slate-950/90 pointer-events-none"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 text-xs font-semibold">
@@ -260,7 +262,7 @@ const homeHtml = `
                 <div class="rounded-2xl border border-slate-200 bg-white shadow-xs flex flex-col justify-between overflow-hidden">
                   ${calc.personaImageUrl ? `
                     <div class="relative h-44 sm:h-48 w-full overflow-hidden rounded-t-2xl bg-slate-950">
-                      <img src="${calc.personaImageUrl}" alt="${escapeHtml(calc.imageAlt || calc.title)}" width="${calc.imageWidth || 640}" height="${calc.imageHeight || 360}" loading="lazy" decoding="async" class="w-full h-full object-cover object-center" />
+                      <img src="${calc.personaImageUrl}" alt="${escapeHtml(calc.imageAlt || calc.title)}" width="360" height="200" loading="lazy" decoding="async" class="w-full h-full object-cover object-center" />
                       <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent"></div>
                       ${calc.personaRole ? `<div class="absolute bottom-2.5 left-3 right-3"><span class="text-[11px] font-medium text-emerald-300 bg-slate-950/85 px-2.5 py-1 rounded-lg border border-emerald-500/30 truncate block">${escapeHtml(calc.personaRole)}</span></div>` : ''}
                     </div>
@@ -303,8 +305,9 @@ routes.push({
 for (const cat of CATEGORIES) {
   const catPath = getCategoryPath(cat.id);
   const catCanonical = getCanonicalUrl(catPath);
-  const catTitle = `${cat.name} Calculators — ${SITE_NAME}`;
-  const catDesc = `${cat.description} Free online engineering and architectural calculation tools on ArchEstate Pro.`;
+  const catSeo = getRouteSeo(catPath);
+  const catTitle = catSeo.title;
+  const catDesc = catSeo.description;
   const catCalcs = CALCULATORS.filter(c => c.category === cat.id);
 
   const catSchema = [
@@ -347,7 +350,7 @@ for (const cat of CATEGORIES) {
                 <div class="rounded-2xl border border-slate-200 bg-white shadow-xs flex flex-col justify-between overflow-hidden">
                   ${calc.personaImageUrl ? `
                     <div class="relative h-44 sm:h-48 w-full overflow-hidden rounded-t-2xl bg-slate-950">
-                      <img src="${calc.personaImageUrl}" alt="${escapeHtml(calc.imageAlt || calc.title)}" width="${calc.imageWidth || 640}" height="${calc.imageHeight || 360}" loading="lazy" decoding="async" class="w-full h-full object-cover object-center" />
+                      <img src="${calc.personaImageUrl}" alt="${escapeHtml(calc.imageAlt || calc.title)}" width="360" height="200" loading="lazy" decoding="async" class="w-full h-full object-cover object-center" />
                       <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent"></div>
                       ${calc.personaRole ? `<div class="absolute bottom-2.5 left-3 right-3"><span class="text-[11px] font-medium text-emerald-300 bg-slate-950/85 px-2.5 py-1 rounded-lg border border-emerald-500/30 truncate block">${escapeHtml(calc.personaRole)}</span></div>` : ''}
                     </div>
@@ -387,8 +390,9 @@ for (const cat of CATEGORIES) {
 for (const calc of CALCULATORS) {
   const calcPath = getCalculatorPath(calc.slug);
   const calcCanonical = getCanonicalUrl(calcPath);
-  const calcTitle = `${calc.title} — ${SITE_NAME}`;
-  const calcDesc = `${calc.shortDescription} Accurate materials, quantities, and financial formulas on ArchEstate Pro.`;
+  const calcSeo = getRouteSeo(calcPath);
+  const calcTitle = calcSeo.title;
+  const calcDesc = calcSeo.description;
   const relatedCalcs = CALCULATORS.filter(c => (calc.relatedCalculatorIds || []).includes(c.id));
 
   // Compute default run results for pristine static preview
@@ -448,7 +452,7 @@ for (const calc of CALCULATORS) {
         </a>
         <nav class="flex items-center gap-3 text-xs font-semibold">
           <a href="${getCategoryPath(calc.category)}" class="text-slate-700 hover:text-emerald-700">&larr; ${escapeHtml(calc.categoryName)}</a>
-          <a href="/contact" class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">Contact</a>
+          <a href="/contact/" class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">Contact</a>
         </nav>
       </div>
     </header>
@@ -790,13 +794,14 @@ const legalPages = [
 ];
 
 for (const leg of legalPages) {
-  const legPath = `/${leg.slug}`;
+  const legPath = `/${leg.slug}/`;
   const legCanonical = getCanonicalUrl(legPath);
+  const legSeo = getRouteSeo(legPath);
 
   routes.push({
     path: legPath,
-    title: leg.title,
-    description: leg.desc,
+    title: legSeo.title,
+    description: legSeo.description,
     canonical: legCanonical,
     schemaJson: [
       {
@@ -804,7 +809,7 @@ for (const leg of legalPages) {
         '@type': 'WebPage',
         'name': leg.heading,
         'url': legCanonical,
-        'description': leg.desc,
+        'description': legSeo.description,
         'publisher': {
           '@type': 'Organization',
           'name': SITE_NAME,
@@ -826,25 +831,25 @@ for (const leg of legalPages) {
           </a>
           <nav class="flex items-center gap-3 text-xs font-semibold">
             <a href="/" class="text-slate-600 hover:text-emerald-700">&larr; Back to Suite</a>
-            <a href="/contact" class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">Contact Us</a>
+            <a href="/contact/" class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">Contact Us</a>
           </nav>
         </div>
       </header>
 
       <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full space-y-8">
         <div class="border-b border-slate-200 pb-5">
-          <div class="text-xs text-slate-500 mb-2">
+          <div class="text-xs text-slate-600 mb-2">
             <a href="/" class="hover:text-emerald-700">Home</a> &gt; <span class="text-slate-800">${escapeHtml(leg.heading)}</span>
           </div>
           <h1 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">${escapeHtml(leg.heading)}</h1>
-          <p class="text-xs sm:text-sm text-slate-600 mt-2">${escapeHtml(leg.desc)}</p>
+          <p class="text-xs sm:text-sm text-slate-600 mt-2">${escapeHtml(legSeo.description)}</p>
         </div>
 
         <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xs">
           ${leg.bodyHtml}
         </div>
 
-        <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500">
+        <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-600">
           <div>
             <span>Direct contact: </span>
             <a href="mailto:${CONTACT_EMAIL}" class="text-emerald-700 font-semibold underline">${CONTACT_EMAIL}</a>
@@ -903,6 +908,7 @@ for (const route of routes) {
   html = html.replace(/<meta property="og:url"[^>]*>/gi, '');
   html = html.replace(/<meta property="og:type"[^>]*>/gi, '');
   html = html.replace(/<meta name="twitter:card"[^>]*>/gi, '');
+  html = html.replace(/<meta\s+name=["']keywords["'][^>]*>/gi, '');
   html = html.replace('</head>', `${ogTags}</head>`);
 
   // Inject JSON-LD Structured Data
@@ -921,7 +927,7 @@ for (const route of routes) {
     const targetFile = path.join(DIST_DIR, 'index.html');
     fs.writeFileSync(targetFile, html, 'utf-8');
   } else {
-    const cleanRelative = route.path.replace(/^\//, '');
+    const cleanRelative = route.path.replace(/^\//, '').replace(/\/+$/, '');
     const routeSubDir = path.join(DIST_DIR, cleanRelative);
     if (!fs.existsSync(routeSubDir)) {
       fs.mkdirSync(routeSubDir, { recursive: true });
@@ -935,12 +941,15 @@ for (const route of routes) {
 // 5.5 Generate static 404.html for Cloudflare Pages
 console.log('Generating static 404.html for Cloudflare Pages SPA fallback...');
 let notFoundHtml = baseTemplate;
-notFoundHtml = notFoundHtml.replace(/<title>[\s\S]*?<\/title>/i, `<title>Page Not Found — ${SITE_NAME}</title>`);
+const notFoundSeo = getRouteSeo('/404/');
+notFoundHtml = notFoundHtml.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(notFoundSeo.title)}</title>`);
 if (notFoundHtml.includes('<meta name="description"')) {
-  notFoundHtml = notFoundHtml.replace(/<meta name="description"[^>]*>/i, `<meta name="description" content="The requested page or calculator could not be found on ArchEstate Pro. Browse our 15 architectural and real estate calculation suites." />`);
+  notFoundHtml = notFoundHtml.replace(/<meta name="description"[^>]*>/i, `<meta name="description" content="${escapeHtml(notFoundSeo.description)}" />`);
 } else {
-  notFoundHtml = notFoundHtml.replace('</head>', `  <meta name="description" content="The requested page or calculator could not be found on ArchEstate Pro. Browse our 15 architectural and real estate calculation suites." />\n</head>`);
+  notFoundHtml = notFoundHtml.replace('</head>', `  <meta name="description" content="${escapeHtml(notFoundSeo.description)}" />\n</head>`);
 }
+// Strip keywords from 404
+notFoundHtml = notFoundHtml.replace(/<meta\s+name=["']keywords["'][^>]*>/gi, '');
 // Add noindex meta tag to 404
 notFoundHtml = notFoundHtml.replace('</head>', `  <meta name="robots" content="noindex, follow" />\n</head>`);
 
@@ -969,14 +978,14 @@ const notFoundPrerender = `
     <div class="space-y-3">
       <h1 class="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">Page Not Found</h1>
       <p class="text-base text-slate-600 max-w-lg mx-auto leading-relaxed">
-        The requested calculator, page, or document URL does not exist or has been relocated.
+        ${escapeHtml(notFoundSeo.description)}
       </p>
     </div>
     <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
       <a href="/" class="px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-sm shadow-md transition-all">
         Return to All 15 Calculators
       </a>
-      <a href="/methodology" class="px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-sm transition-all">
+      <a href="/methodology/" class="px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-sm transition-all">
         Calculation Methodology
       </a>
     </div>

@@ -209,7 +209,7 @@ export const CalculatorEducationalGuide: React.FC<CalculatorEducationalGuideProp
         <p className="text-sm text-slate-300 leading-relaxed">
           {content.whenToConsultProfessional}
         </p>
-        <p className="text-xs text-slate-400 border-t border-slate-800 pt-3">
+        <p className="text-xs text-slate-300 border-t border-slate-800 pt-3">
           Professional Notice: All computational outputs on ArchEstate Pro represent preliminary planning estimators. Actual field conditions, structural loads, seismic ratings, and municipal building codes must be verified by a qualified professional before ordering materials or signing contracts.
         </p>
       </section>
@@ -278,7 +278,7 @@ export const CalculatorEducationalGuide: React.FC<CalculatorEducationalGuideProp
                     <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wider">
                       {related.categoryName}
                     </span>
-                    <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-600 transition-colors" />
+                    <ExternalLink className="w-3.5 h-3.5 text-slate-600 group-hover:text-emerald-600 transition-colors" />
                   </div>
                   <h4 className="font-semibold text-slate-900 group-hover:text-emerald-800 text-sm">
                     {related.title}

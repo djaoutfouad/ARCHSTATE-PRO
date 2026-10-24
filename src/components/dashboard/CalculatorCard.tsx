@@ -31,8 +31,8 @@ export const CalculatorCard: React.FC<CalculatorCardProps> = ({
           <img
             src={calculator.personaImageUrl}
             alt={calculator.imageAlt || calculator.title}
-            width={calculator.imageWidth || 640}
-            height={calculator.imageHeight || 360}
+            width={360}
+            height={200}
             loading="lazy"
             decoding="async"
             onError={() => setImageError(true)}
@@ -44,7 +44,7 @@ export const CalculatorCard: React.FC<CalculatorCardProps> = ({
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-900/60 to-slate-950/50" />
             <div className="relative flex flex-col items-center gap-1.5 opacity-60">
               <DynamicIcon name={calculator.iconName} className="w-9 h-9 text-emerald-400" />
-              <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">{calculator.categoryName}</span>
+              <span className="text-[10px] font-mono text-slate-300 uppercase tracking-widest">{calculator.categoryName}</span>
             </div>
           </div>
         )}
@@ -55,6 +55,7 @@ export const CalculatorCard: React.FC<CalculatorCardProps> = ({
         {/* Top Left: Icon Button */}
         <Link
           to={calcPath}
+          aria-label={`Open ${calculator.title}`}
           className={`absolute top-3 left-3 z-10 w-10 h-10 rounded-xl flex items-center justify-center backdrop-blur-md transition-all duration-300 shadow-md ${
             isRealEstate 
               ? 'bg-slate-950/80 text-amber-400 border border-amber-500/40 group-hover:bg-amber-600 group-hover:text-white' 

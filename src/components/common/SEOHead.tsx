@@ -8,7 +8,8 @@ import {
   CONTACT_EMAIL, 
   getCanonicalUrl, 
   getCalculatorPath, 
-  getCategoryPath 
+  getCategoryPath,
+  getRouteSeo
 } from '../../config/site';
 
 interface SEOHeadProps {
@@ -32,27 +33,32 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   let canonicalUrl = getCanonicalUrl(pathname);
 
   if (is404) {
-    pageTitle = `Page Not Found — ${SITE_NAME}`;
-    metaDesc = 'The requested calculator or page could not be located on ArchEstate Pro. Browse our 15 architectural and real estate calculation suites.';
+    const seo = getRouteSeo('/404/');
+    pageTitle = seo.title;
+    metaDesc = seo.description;
     canonicalUrl = getCanonicalUrl(pathname);
   } else if (calculator) {
-    pageTitle = `${calculator.title} — ${SITE_NAME}`;
-    metaDesc = `${calculator.shortDescription} Accurate materials, quantities, and financial formulas on ArchEstate Pro.`;
-    canonicalUrl = getCanonicalUrl(getCalculatorPath(calculator.slug));
+    const path = getCalculatorPath(calculator.slug);
+    const seo = getRouteSeo(path);
+    pageTitle = seo.title;
+    metaDesc = seo.description;
+    canonicalUrl = getCanonicalUrl(path);
   } else if (category) {
-    pageTitle = `${category.name} Calculators — ${SITE_NAME}`;
-    metaDesc = `${category.description} Free online engineering and architectural calculation tools.`;
-    canonicalUrl = getCanonicalUrl(getCategoryPath(category.id));
+    const path = getCategoryPath(category.id);
+    const seo = getRouteSeo(path);
+    pageTitle = seo.title;
+    metaDesc = seo.description;
+    canonicalUrl = getCanonicalUrl(path);
   } else if (legalType) {
-    const titles: Record<string, string> = {
-      about: `About Us — ${SITE_NAME}`,
-      contact: `Contact Engineering & Support — ${SITE_NAME}`,
-      privacy: `Privacy Policy — ${SITE_NAME}`,
-      terms: `Terms of Service & Disclaimers — ${SITE_NAME}`,
-      methodology: `Engineering & Calculation Methodology — ${SITE_NAME}`,
-    };
-    pageTitle = titles[legalType] || pageTitle;
-    canonicalUrl = getCanonicalUrl(`/${legalType}`);
+    const seo = getRouteSeo(`/${legalType}/`);
+    pageTitle = seo.title;
+    metaDesc = seo.description;
+    canonicalUrl = getCanonicalUrl(`/${legalType}/`);
+  } else if (pathname) {
+    const seo = getRouteSeo(pathname);
+    pageTitle = seo.title;
+    metaDesc = seo.description;
+    canonicalUrl = getCanonicalUrl(pathname);
   }
 
   // Client-side DOM update for SPA transitions
@@ -76,6 +82,12 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       document.head.appendChild(canonicalLink);
     }
     canonicalLink.setAttribute('href', canonicalUrl);
+
+    // Remove keywords tag if present
+    const keywordsMeta = document.querySelector('meta[name="keywords"]');
+    if (keywordsMeta) {
+      keywordsMeta.remove();
+    }
 
     // Robots meta tag handling
     let robotsMeta = document.querySelector('meta[name="robots"]');

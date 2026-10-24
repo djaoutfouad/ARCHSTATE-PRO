@@ -34,10 +34,10 @@ export const NotFoundPage: React.FC = () => {
             <span>Return to All 15 Calculators</span>
           </Link>
           <Link
-            to="/methodology"
+            to="/methodology/"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold text-sm transition-all focus:outline-hidden focus:ring-2 focus:ring-slate-300"
           >
-            <HelpCircle className="w-4 h-4 text-slate-500" />
+            <HelpCircle className="w-4 h-4 text-slate-600" />
             <span>Calculation Methodology</span>
           </Link>
         </div>
@@ -46,7 +46,7 @@ export const NotFoundPage: React.FC = () => {
         <div className="pt-8 border-t border-slate-200/80 text-left space-y-4">
           <div className="flex items-center gap-2">
             <Compass className="w-4 h-4 text-emerald-700" />
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-500">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-600">
               Browse Active Tool Categories
             </h2>
           </div>
@@ -62,12 +62,12 @@ export const NotFoundPage: React.FC = () => {
                   <span className="text-xs font-mono font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">
                     {cat.count} Tools
                   </span>
-                  <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all" />
+                  <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all" />
                 </div>
                 <h3 className="text-sm font-bold text-slate-900 mt-2 group-hover:text-emerald-700 transition-colors">
                   {cat.shortName}
                 </h3>
-                <p className="text-xs text-slate-500 mt-1 line-clamp-2">
+                <p className="text-xs text-slate-600 mt-1 line-clamp-2">
                   {cat.tagline}
                 </p>
               </Link>
@@ -76,7 +76,7 @@ export const NotFoundPage: React.FC = () => {
         </div>
 
         {/* Direct Help */}
-        <p className="text-xs text-slate-500 pt-4">
+        <p className="text-xs text-slate-600 pt-4">
           Need technical assistance or want to report a broken link? Reach our team directly at{' '}
           <a href={`mailto:${CONTACT_EMAIL}`} className="text-emerald-700 hover:underline font-medium">
             {CONTACT_EMAIL}

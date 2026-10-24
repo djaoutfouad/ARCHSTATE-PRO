@@ -129,6 +129,8 @@ async function runPlaywrightTests() {
     });
 
     const page: Page = await context.newPage();
+    page.on('console', msg => console.log('PAGE LOG:', msg.text()));
+    page.on('pageerror', err => console.error('PAGE ERROR:', err.message));
 
     // 1. Test HTTP 404 behavior and headers
     console.log('\n--- 1. Testing HTTP 404 Behavior & Headers ---');

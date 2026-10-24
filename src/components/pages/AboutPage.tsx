@@ -137,11 +137,11 @@ export const AboutPage: React.FC = () => {
       {/* Further Information Links */}
       <footer className="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
         <div className="flex flex-wrap gap-4 text-sm font-semibold">
-          <Link to="/methodology" className="text-emerald-700 hover:text-emerald-800 flex items-center gap-1.5">
+          <Link to="/methodology/" className="text-emerald-700 hover:text-emerald-800 flex items-center gap-1.5">
             <BookOpen className="w-4 h-4" />
             <span>Read Calculation Methodology</span>
           </Link>
-          <Link to="/contact" className="text-emerald-700 hover:text-emerald-800 flex items-center gap-1.5">
+          <Link to="/contact/" className="text-emerald-700 hover:text-emerald-800 flex items-center gap-1.5">
             <Mail className="w-4 h-4" />
             <span>Contact Our Team</span>
           </Link>

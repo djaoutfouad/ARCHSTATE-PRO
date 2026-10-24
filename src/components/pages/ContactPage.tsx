@@ -163,7 +163,7 @@ export const ContactPage: React.FC = () => {
             </p>
           </div>
           <div className="pt-2 border-t border-slate-200 text-[11px] text-slate-700 flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-slate-400" />
+            <ShieldCheck className="w-3.5 h-3.5 text-slate-600" />
             <span>Direct correspondence only, no marketing spam</span>
           </div>
         </div>
@@ -332,7 +332,7 @@ export const ContactPage: React.FC = () => {
         <HelpCircle className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
         <p className="leading-relaxed">
           Please do not include confidential passwords, personal banking credentials, or proprietary blueprints in public contact submissions. All incoming correspondence is handled in accordance with our{' '}
-          <a href="/privacy" className="text-emerald-700 font-semibold underline">
+          <a href="/privacy/" className="text-emerald-700 font-semibold underline">
             Privacy Policy
           </a>.
         </p>

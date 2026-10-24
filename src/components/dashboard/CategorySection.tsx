@@ -29,6 +29,7 @@ export const CategorySection: React.FC<CategorySectionProps> = ({
           <div className="flex items-center gap-2.5">
             <Link
               to={catPath}
+              aria-label={`View ${category.name} calculators`}
               className="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center shadow-xs hover:bg-emerald-700 transition-colors"
             >
               <DynamicIcon name={category.iconName} className="w-4 h-4" />
@@ -42,7 +43,7 @@ export const CategorySection: React.FC<CategorySectionProps> = ({
               {calculators.length} Tools
             </span>
           </div>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium">
+          <p className="text-xs sm:text-sm text-slate-600 font-medium">
             {category.description}
           </p>
         </div>

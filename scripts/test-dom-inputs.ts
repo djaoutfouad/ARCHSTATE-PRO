@@ -8,7 +8,7 @@ import { JSDOM } from 'jsdom';
 
 // 1. Setup Full DOM Environment BEFORE importing React
 const dom = new JSDOM('<!DOCTYPE html><html><head></head><body><div id="root"></div></body></html>', {
-  url: 'https://archestatepro.com/calculators/ba13-drywall-ceiling/',
+  url: 'https://archstate-pro.pages.dev/calculators/ba13-drywall-ceiling/',
   pretendToBeVisual: true,
 });
 

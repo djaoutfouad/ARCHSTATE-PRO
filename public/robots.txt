@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://archestatepro.com/sitemap.xml
+Sitemap: https://archstate-pro.pages.dev/sitemap.xml

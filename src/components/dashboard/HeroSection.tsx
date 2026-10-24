@@ -21,11 +21,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className="hero-section no-print relative overflow-hidden pt-14 pb-16 border-b border-slate-800 bg-slate-950 text-white w-full">
       {/* High-Resolution Professional Craftsman with Spirit Level Background */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-45 scale-105 pointer-events-none"
-        style={{
-          backgroundImage: `url('/images/hero-construction-blueprint.jpg')`
-        }}
+      <img
+        src="/images/hero-construction-blueprint.jpg"
+        alt="Architectural Blueprint and Construction Planning"
+        width={1920}
+        height={600}
+        fetchPriority="high"
+        loading="eager"
+        decoding="sync"
+        className="absolute inset-0 w-full h-full object-cover object-center opacity-45 scale-105 pointer-events-none"
       />
       {/* Balanced Vignette Gradient for Perfect Text Legibility */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-900/75 to-slate-950/90 pointer-events-none" />

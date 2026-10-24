@@ -165,7 +165,7 @@ export const MethodologyPage: React.FC = () => {
         </p>
         <div className="pt-2">
           <Link
-            to="/contact"
+            to="/contact/"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all shadow-xs"
           >
             <Mail className="w-4 h-4" />
